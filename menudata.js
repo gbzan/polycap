@@ -26,8 +26,7 @@ var menudata={children:[
 {text:"Home",url:"index.html"},
 {text:"Installation instructions",url:"installation_instructions.html"},
 {text:"Usage",url:"usage.html"},
-{text:"Examples",url:"examples.html"},
-{text:"Files",url:"files.html",children:[
+{text:"C API",url:"files.html",children:[
 {text:"File List",url:"files.html"},
 {text:"Globals",url:"globals.html",children:[
 {text:"All",url:"globals.html",children:[
@@ -41,4 +40,6 @@ var menudata={children:[
 {text:"Typedefs",url:"globals_type.html"},
 {text:"Enumerations",url:"globals_enum.html"},
 {text:"Enumerator",url:"globals_eval.html"},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"Macros",url:"globals_defs.html"}]}]},
+{text:"Python",url:"pyth_docs.html"},
+{text:"Examples",url:"examples.html"}]}

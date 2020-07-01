@@ -29,7 +29,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">polycap
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.1</span>
    </div>
    <div id="projectbrief">Calculate X-ray transmission through polycapillaries</div>
   </td>
@@ -90,7 +90,7 @@ OpenMP</h2>
 <p>It is strongly advised to use the <a href="https://gcc.gnu.org/install/">GNU GCC</a> compiler to compile <b>Polycap</b>.</p>
 <h2><a class="anchor" id="gsl"></a>
 GNU Scientific Library</h2>
-<p>TODO</p>
+<p>The GNU Scientific Library is a software library for numerical computations in applied mathematics and science. The GSL is written in C; wrappers are available for other programming languages. The GSL is part of the GNU Project and is distributed under the GNU General Public License.</p>
 <h2><a class="anchor" id="easyrng"></a>
 easyRNG</h2>
 <p><b>Polycap</b> uses <b>easyRNG</b>'s random number generators when present at compilation time. If not, it will make use of the GNU Scientific Library for this purpose. <b>easyRNG</b> is a simple library for C and Fortran providing access to several pseudo-random number generators and pseudo-random number distributions.</p>
@@ -100,19 +100,89 @@ easyRNG</h2>
 <p>The source code release tarballs are hosted on the Github repository, in the <a href="https://github.com/tschoonj/easyRNG/releases">releases section</a>.</p>
 <h2><a class="anchor" id="python"></a>
 Python bindings</h2>
-<p><b>Polycap</b> ships with support for Python. In order to generate these at build time, you will need a complete installation of Python, including the headers, as well as Cython and Numpy. These should be easy to install with any package manager. We support both Python 2.7 and 3.x</p>
-<h1><a class="anchor" id="downloading4"></a>
+<p><b>Polycap</b> ships with support for Python. In order to generate these at build time, you will need a complete installation of Python, including the headers, as well as Cython and Numpy. These should be easy to install with any package manager. We support Python 3.6+</p>
+<h1><a class="anchor" id="downloading"></a>
 Downloading the Polycap Software</h1>
-<p>TODO</p>
+<p>The source code release tarballs are hosted on the Github repository, in the <a href="https://github.com/PieterTack/polycap/releases">releases section</a>. Just get the latest tarball and run the following commands: </p><pre class="fragment"> tar xfvz polycap-x.y.tar.gz
+ cd polycap-x.y
+ mkdir build ; cd build
+ meson
+ ninja
+ ninja install
+</pre><p>Alternatively, use <code>./configure</code>, <code>make</code> and <code>make install</code>.</p>
+<h2><a class="anchor" id="condaforge"></a>
+Conda-Forge</h2>
+<p>Users of the <a href="https://www.anaconda.com/products/individual">Python Anaconda distribution</a> can install polycap, including its python bindings, from the conda-forge channel:</p>
+<blockquote class="doxtable">
+<p><code>conda install -c conda-forge polycap</code> </p>
+</blockquote>
+<p>Conda packages are available for Windows, macOS and Linux. <b>Please note that this is currently our only line of support for the Windows platform!</b></p>
+<h2><a class="anchor" id="homebrew"></a>
+Homebrew</h2>
+<p>Homebrew users can install polycap via Tom Schoonjans' tap:</p>
+<blockquote class="doxtable">
+<p><code>brew install tschoonj/tap/polycap</code> </p>
+</blockquote>
+<h2><a class="anchor" id="linux"></a>
+Linux</h2>
+<h3><a class="anchor" id="rhel"></a>
+Fedora, Centos and Scientific Linux</h3>
+<p>To facilitate the installation on RPM based Linux distributions, the package includes a spec file which can be used to produce RPM packages for linux distributions that support them (Fedora, Red Hat etc). The developers have built 64-bit RPM packages of Gtkmm-PLplot for the officially supported Fedora and Redhat EL/CentOS/Scientific Linux 7 and 8 distributions. Access to their RPM repository can be obtained as follows for Fedora distros:</p>
+<blockquote class="doxtable">
+<p><code>sudo rpm -Uvh <a href="http://xmi-yum.tomschoonjans.eu/xmi-repo-key-fedora.noarch.rpm">http://xmi-yum.tomschoonjans.eu/xmi-repo-key-fedora.noarch.rpm</a></code> </p>
+</blockquote>
+<p>for Red Hat EL 7 based distributions:</p>
+<blockquote class="doxtable">
+<p><code>sudo rpm -Uvh <a href="http://xmi-yum.tomschoonjans.eu/xmi-repo-key-7.0-1.el7.noarch.rpm">http://xmi-yum.tomschoonjans.eu/xmi-repo-key-7.0-1.el7.noarch.rpm</a></code> </p>
+</blockquote>
+<p>for Red Hat EL 8 based distributions:</p>
+<blockquote class="doxtable">
+<p><code>sudo rpm -Uvh <a href="http://xmi-yum.tomschoonjans.eu/xmi-repo-key-8.0-1.el8.noarch.rpm">http://xmi-yum.tomschoonjans.eu/xmi-repo-key-8.0-1.el8.noarch.rpm</a></code> </p>
+</blockquote>
+<p>The polycap themselves can then be downloaded using yum (or <code>dnf</code> which is increasingly being used nowadays):</p>
+<blockquote class="doxtable">
+<p><code>sudo yum install polycap polycap-devel polycap-python polycap-doc</code> </p>
+</blockquote>
+<p>Updates can be installed in a similar way:</p>
+<blockquote class="doxtable">
+<p><code>sudo yum update polycap polycap-devel polycap-python polycap-doc</code> </p>
+</blockquote>
+<h3><a class="anchor" id="debian"></a>
+Debian and Ubuntu</h3>
+<p>Packages were created for Debian and Ubuntu. Currently the following flavors are supported: Debian Buster and several Ubuntu versions . In order to access these packages using your favorite package manager, execute the following command to import my public key:</p>
+<blockquote class="doxtable">
+<p><code>curl <a href="http://xmi-apt.tomschoonjans.eu/xmi.packages.key">http://xmi-apt.tomschoonjans.eu/xmi.packages.key</a> | sudo apt-key add -</code> </p>
+</blockquote>
+<p>Next, add the package download location corresponding to your distribution to the /etc/apt/sources.list file (as root):</p>
+<p>Debian Buster: </p><pre class="fragment">  deb http://xmi-apt.tomschoonjans.eu/debian buster stable
+  deb-src http://xmi-apt.tomschoonjans.eu/debian buster stable
+</pre><p>Ubuntu Bionic 18.04: </p><pre class="fragment">  deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
+  deb-src http://xmi-apt.tomschoonjans.eu/ubuntu bionic stable
+</pre><p>Ubuntu Eoan 19.10: </p><pre class="fragment">  deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu eoan stable
+  deb-src http://xmi-apt.tomschoonjans.eu/ubuntu eoan stable
+</pre><p>Ubuntu Focal 20.04: </p><pre class="fragment">  deb [arch=amd64] http://xmi-apt.tomschoonjans.eu/ubuntu focal stable
+  deb-src http://xmi-apt.tomschoonjans.eu/ubuntu focal stable
+</pre><p>When the sources.list file contains the correct download locations, update the apt cache by running:</p>
+<blockquote class="doxtable">
+<p><code>sudo apt-get update</code> </p>
+</blockquote>
+<p>After this, one can install polycap by executing the following command:</p>
+<blockquote class="doxtable">
+<p><code>sudo apt-get install libpolycap libpolycap-dev libpolycap-doc python3-polycap</code> </p>
+</blockquote>
 <h2><a class="anchor" id="head"></a>
 Github repository</h2>
-<p>People interested in running the latest development version will have to clone the Github repository. <br  />
- Make sure you have the above mentioned dependencies installed, as well as the GNU autotools (autoconf, automake and libtool). </p><pre class="fragment">  git clone git@github.com:PieterTack/polycap.git                                                             
+<p>People interested in running the latest development version will have to clone the Github repository, and install meson and ninja: </p><pre class="fragment">  git clone git@github.com:PieterTack/polycap.git
   cd polycap
+  mkdir build ; cd build
+  meson .. 
+  ninja
+  ninja install
+</pre><p>If building with GNU autotools is preferred, install autoconf, automake, libtool and mm-common. </p><pre class="fragment">  git clone git@github.com:PieterTack/polycap.git
+  cd gtkmm-plplot
   autoreconf -i
   ./configure
   make
-  make check
   make install
 </pre> </div></div><!-- contents -->
 </div><!-- PageDoc -->
